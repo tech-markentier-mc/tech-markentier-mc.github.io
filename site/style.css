@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --ground: #06222a;
+  --cream: #f3efe7;
+  --teal: #45c7c1;
+  --petrol: #0c6672;
+  --orange: #f58a3c;
+  --muted: #9db5ba;
+  --mc-green: #55ff55;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--cream);
+  background: var(--ground);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+::selection { color: var(--ground); background: var(--teal); }
+.teal { color: var(--teal); }
+.orange { color: var(--orange); }
+.mc-green { color: var(--mc-green); }
+
+.page {
+  width: min(100% - 64px, 1248px);
+  min-height: 100svh;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3.2vw, 32px);
+  padding-block: clamp(16px, 8vw, 64px) clamp(16px, 8vw, 64px);
+  border-bottom: 2px solid #23424a;
+}
+
+.logo { width: 15%; height: auto; flex-shrink: 0; }
+.wordmark {
+  color: var(--teal);
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 700;
+  font-size: clamp(18px, 5.65vw, 88px);
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+main { position: relative; flex: 1; padding-block: 64px 80px; }
+.status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--orange);
+  font: 700 11px/1.6 "JetBrains Mono", monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.status-dot { width: 7px; height: 7px; background: currentColor; }
+h1 {
+  margin: 24px 0 20px;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.12;
+  font-weight: 650;
+  letter-spacing: -0.045em;
+}
+.intro { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.8; }
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 32px;
+  padding: 14px 20px;
+  border: 1px solid var(--teal);
+  border-radius: 3px;
+  color: var(--ground);
+  background: var(--teal);
+  text-decoration: none;
+  font: 700 13px/1.5 "JetBrains Mono", monospace;
+  transition: background-color 150ms, border-color 150ms;
+}
+.github-link:hover { background: var(--cream); border-color: var(--cream); }
+.github-link:focus-visible { outline: 3px solid var(--orange); outline-offset: 5px; }
+.github-link span { font-size: 20px; line-height: 1; }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding-block: 24px;
+  border-top: 1px solid #23424a;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+footer > :last-child { text-align: right; }
+
+@media (max-width: 700px) {
+  .page { width: calc(100% - 40px); }
+  .masthead { flex-direction: column; gap: 24px; padding-block: 44px; }
+  .logo { width: 92px; }
+  .wordmark { font-size: clamp(16px, 5.45vw, 36px); }
+  main { padding-block: 44px 56px; }
+  .intro { font-size: 15px; }
+  .blocks { display: none; }
+  footer { flex-direction: column; gap: 12px; }
+  footer > :last-child { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .github-link { transition: none; }
+}
